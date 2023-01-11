@@ -1,3 +1,5 @@
-import Test from './js/Test'
+/* eslint-disable no-new */
+import Webgl from './js/webgl/Webgl';
 
-const example = new Test()
+const webgl = new Webgl();
+webgl.animate();
