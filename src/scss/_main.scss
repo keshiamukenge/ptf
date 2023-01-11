@@ -1,0 +1,16 @@
+html {
+  body {
+    background-color: $black-color;
+    font-family: $font;
+    color: $white-color;
+
+    h1,
+    h2 {
+      font-weight: $title-weight;
+    }
+
+    p {
+      font-weight: $text-weight;
+    }
+  }
+}
