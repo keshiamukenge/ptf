@@ -14,6 +14,7 @@ export default class Renderer {
     });
 
     this.instance.setSize(this.webgl.sizes.width, this.webgl.sizes.height);
+    this.instance.outputEncoding = THREE.sRGBEncoding;
   }
 
   rendererSize() {

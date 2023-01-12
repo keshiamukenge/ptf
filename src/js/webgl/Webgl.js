@@ -1,7 +1,11 @@
 import * as THREE from 'three';
 
 import {
-  Plane, Camera, Renderer,
+  Plane,
+  Camera,
+  Renderer,
+  PostProcessing,
+  MouseTracking,
 } from './instances';
 
 export default class Webgl {
@@ -17,6 +21,7 @@ export default class Webgl {
     this.initWebgl();
 
     this.onResizeWindow();
+    this.onMouseMove();
     this.animate();
   }
 
@@ -24,10 +29,13 @@ export default class Webgl {
     this.scene = new THREE.Scene();
 
     this.camera = new Camera(this, { orbitControls: false });
-    this.camera.setupCamera();
 
     this.renderer = new Renderer(this);
+    this.mouse = new MouseTracking(this);
+
     document.body.appendChild(this.renderer.instance.domElement);
+
+    this.postProcessing = new PostProcessing(this);
 
     this.plane = new Plane(this);
     this.scene.add(this.plane.instance);
@@ -39,8 +47,15 @@ export default class Webgl {
       this.sizes.height = window.innerHeight;
 
       this.camera.update();
+      this.postProcessing.resize();
 
       this.renderer.rendererSize();
+    });
+  }
+
+  onMouseMove() {
+    window.addEventListener('mousemove', (event) => {
+      this.mouse.onMouseMove(event);
     });
   }
 
@@ -52,8 +67,11 @@ export default class Webgl {
     this.plane.updatePlaneSize();
     this.plane.updatePlanePosition();
 
+    this.mouse.getVelocity();
+
     // this.camera.updateControls();
 
-    this.renderer.instance.render(this.scene, this.camera.instance);
+    // this.renderer.instance.render(this.scene, this.camera.instance);
+    this.postProcessing.update();
   }
 }
