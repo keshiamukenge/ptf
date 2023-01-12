@@ -1,46 +1,36 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+import {
+  Plane, Camera, Renderer,
+} from './instances';
 
 export default class Webgl {
   constructor() {
+    window.webgl = this;
+
     this.sizes = {
       width: window.innerWidth,
       height: window.innerHeight,
+      aspect: window.innerWidth / window.innerHeight,
     };
 
     this.initWebgl();
 
     this.onResizeWindow();
+    this.animate();
   }
 
   initWebgl() {
     this.scene = new THREE.Scene();
 
-    this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
+    this.camera = new Camera(this, { orbitControls: false });
+    this.camera.setupCamera();
 
-    this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(this.sizes.width, this.sizes.height);
-    document.body.appendChild(this.renderer.domElement);
+    this.renderer = new Renderer(this);
+    document.body.appendChild(this.renderer.instance.domElement);
 
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-
-    this.camera.position.z = 5;
-    this.controls.update();
-
-    this.geometry = new THREE.BoxGeometry(1, 1, 1);
-    this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.cube = new THREE.Mesh(this.geometry, this.material);
-    this.scene.add(this.cube);
-  }
-
-  rendererSize() {
-    this.renderer.setSize(this.sizes.width, this.sizes.height);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.plane = new Plane(this);
+    this.scene.add(this.plane.instance);
   }
 
   onResizeWindow() {
@@ -48,21 +38,22 @@ export default class Webgl {
       this.sizes.width = window.innerWidth;
       this.sizes.height = window.innerHeight;
 
-      this.camera.aspect = this.sizes.width / this.sizes.height;
-      this.camera.updateProjectionMatrix();
+      this.camera.update();
 
-      this.rendererSize();
+      this.renderer.rendererSize();
     });
   }
 
   animate() {
     requestAnimationFrame(() => this.animate());
 
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
+    this.plane.updateImageSize();
+    this.plane.updateImagePosition();
+    this.plane.updatePlaneSize();
+    this.plane.updatePlanePosition();
 
-    this.controls.update();
+    // this.camera.updateControls();
 
-    this.renderer.render(this.scene, this.camera);
+    this.renderer.instance.render(this.scene, this.camera.instance);
   }
 }
