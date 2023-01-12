@@ -3,6 +3,8 @@ html {
     background-color: $black-color;
     font-family: $font;
     color: $white-color;
+    width: 100vw;
+    height: 300vh;
 
     h1,
     h2 {
@@ -11,6 +13,20 @@ html {
 
     p {
       font-weight: $text-weight;
+    }
+
+    img {
+      visibility: hidden;
+      width: 40%;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
     }
   }
 }
