@@ -8,7 +8,7 @@ export default class Camera {
     this.setupCamera();
 
     if (orbitControls) {
-      this.controls = new OrbitControls(this.instance, this.webgl.renderer.domElement);
+      this.controls = new OrbitControls(this.instance, this.webgl.renderer.instance.domElement);
     }
   }
 

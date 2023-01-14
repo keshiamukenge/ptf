@@ -16,12 +16,13 @@ export default class Plane {
     };
 
     this.texture = new THREE.TextureLoader().load(this.image.src);
+    // this.texture.needsUpdate = true;
 
     this.setupPlane();
   }
 
   setupPlane() {
-    this.geometry = new THREE.PlaneGeometry(1, 1, 10, 10);
+    this.geometry = new THREE.PlaneGeometry(1, 1);
     this.material = new THREE.MeshBasicMaterial({ map: this.texture, side: THREE.DoubleSide });
     this.instance = new THREE.Mesh(this.geometry, this.material);
     this.instance.scale.set(this.image.width, this.image.height, 1);
