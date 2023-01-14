@@ -12,6 +12,8 @@ html {
     text-align: center;
 
     main {
+      height: 300vh;
+
       .hero-section {
         margin: $desktopMargin;
         height: 100vh;
@@ -33,7 +35,7 @@ html {
 
             img {
               visibility: hidden;
-              width: 100%;
+              width: 75%;
               height: auto;
               margin: auto;
               display: block;
@@ -53,6 +55,7 @@ html {
 
       h1 {
         font-size: 60px;
+        margin-top: 20%;
       }
     }
 
