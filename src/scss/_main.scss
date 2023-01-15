@@ -8,27 +8,73 @@ html {
     font-family: $font;
     color: $white-color;
     width: 100vw;
-    height: 300vh;
     text-align: center;
+    height: fit-content;
+
+    header {
+      width: 100%;
+      height: fit-content;
+      padding: 1rem 4rem;
+
+      nav {
+        width: fit-content;
+        height: fit-content;
+
+        a {
+          color: $white-color;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: $font;
+        }
+      }
+    }
 
     main {
-      height: 300vh;
+      width: 100%;
 
       .hero-section {
         margin: $desktopMargin;
         height: 100vh;
 
-        .hero-section__container-content {
+        .container-content {
           width: 100%;
           height: 100%;
           display: flex;
 
-          .hero-section__text-content {
+          .text-content {
             width: 100%;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10rem;
+
+            h1 {
+              font-size: 60px;
+              width: 70%;
+              text-transform: uppercase;
+              text-align: left;
+              margin-top: auto;
+              text-align: justify;
+              text-align-last: justify;
+              line-height: 70px;
+
+              strong {
+                color: $main-color;
+                width: fit-content;
+                display: inline-block;
+
+                &::after {
+                  content: '';
+                  display: block;
+                  width: 100%;
+                  height: 3px;
+                  background-color: $main-color;
+                }
+              }
+            }
           }
 
-          .hero-section__image-content {
+          .image-content {
             width: 100%;
             height: 100%;
             display: flex;
@@ -44,6 +90,73 @@ html {
         }
       }
 
+      .work-section {
+        height: fit-content;
+        width: 100%;
+        margin: 10rem 0;
+
+        h2 {
+          display: flex;
+          width: fit-content;
+          position: relative;
+          animation: slideToRight 10s linear infinite;
+
+          @keyframes slideToRight {
+            0% {
+              transform: translate3d(-50%, 0, 0);
+            }
+          }
+
+          @keyframes slideToLeft {
+            100% {
+              transform: translate3d(-50%, 0, 0);
+            }
+          }
+
+          .slide-item {
+            margin-right: 5rem;
+          }
+        }
+
+        .container-projects-list {
+          margin: 6rem 0 0 4rem;
+
+          ul {
+            width: fit-content;
+            height: fit-content;
+
+            li {
+              width: fit-content;
+              height: fit-content;
+              font-family: $font;
+              margin-bottom: 40px;
+
+              &:hover {
+                cursor: pointer;
+              }
+
+              div {
+                font-size: 25px;
+                font-weight: 100;
+                text-transform: uppercase;
+
+                span {
+                  margin-left: 1rem;
+                  opacity: 0.5;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .contact-section {
+        padding: 8rem 0;
+        margin: 0 4rem;
+        height: fit-content;
+        text-align: left;
+      }
+
       h1,
       h2 {
         font-weight: $title-weight;
@@ -53,9 +166,9 @@ html {
         font-weight: $text-weight;
       }
 
-      h1 {
-        font-size: 60px;
-        margin-top: 20%;
+      h2 {
+        font-size: 120px;
+        text-transform: uppercase;
       }
     }
 
