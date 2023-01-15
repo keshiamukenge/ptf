@@ -11,6 +11,17 @@ html {
     text-align: center;
     height: fit-content;
 
+    .cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 1px solid $white-color;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      visibility: hidden;
+      z-index: 0;
+    }
+
     header {
       width: 100%;
       height: fit-content;
@@ -58,6 +69,17 @@ html {
               text-align-last: justify;
               line-height: 70px;
 
+              div {
+                width: fit-content;
+                overflow: hidden;
+
+                span {
+                  display: inline-block;
+                  width: fit-content;
+                  transform: translateY(100%);
+                }
+              }
+
               strong {
                 color: $main-color;
                 width: fit-content;
@@ -99,6 +121,13 @@ html {
           display: flex;
           width: fit-content;
           position: relative;
+
+          .slide-item {
+            margin-right: 5rem;
+          }
+        }
+
+        .scroll-right {
           animation: slideToRight 10s linear infinite;
 
           @keyframes slideToRight {
@@ -106,15 +135,15 @@ html {
               transform: translate3d(-50%, 0, 0);
             }
           }
+        }
+
+        .scroll-left {
+          animation: slideToLeft 10s linear infinite;
 
           @keyframes slideToLeft {
             100% {
               transform: translate3d(-50%, 0, 0);
             }
-          }
-
-          .slide-item {
-            margin-right: 5rem;
           }
         }
 

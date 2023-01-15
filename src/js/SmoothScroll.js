@@ -10,7 +10,5 @@ export default class SmoothScroll {
       el: document.querySelector('[data-scroll-container]'),
       smooth: true,
     });
-
-    console.log(this.instance);
   }
 }
