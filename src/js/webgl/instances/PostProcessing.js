@@ -79,7 +79,7 @@ export default class PostProcessing {
           // vec2 warpedUV = vUv + vec2(hash - 0.5)*c; //power
           // color = texture2D(tDiffuse,warpedUV) + texture2D(tDiffuse,warpedUV)*vec4(vec3(c),1.);
 
-          // float c = circle(newUV, uMouse, 0.0, 0.2) * 40.0 * uVelo;
+          // float c = circle(newUV, uMouse, 0.0, 0.2);
           float c = circle(newUV, uMouse, 0.0, 0.2 + uVelo * 2.0) * 40.0 * uVelo;
           vec2 offsetVector = normalize(uMouse - vUv);
           vec2 warpedUV = mix(vUv, uMouse, c * 0.99); //power
