@@ -1,0 +1,38 @@
+{
+  "name": "ptf",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "staticFiles": {
+    "staticPath": "static",
+    "staticOutPath": "vendor"
+  },
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshiamukenge/ptf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keshiamukenge/ptf/issues"
+  },
+  "homepage": "https://github.com/keshiamukenge/ptf#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "gsap": "^3.11.4",
+    "locomotive-scroll": "^4.1.4",
+    "three": "^0.148.0"
+  }
+}

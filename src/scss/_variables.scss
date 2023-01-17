@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+
+$font: 'Raleway';
+
+$title-weight: 400;
+$text-weight: 400;
+
+$main-color: #dfbbbb;
+$black-color: black;
+$white-color: white;
+
+$desktopMargin: 0 4rem;
+$tabletMargin: 0 2rem;
+$mobilepMargin: 0 2rem;
+
+$screen-size-s: 320px;
+$screen-size-m: 720px;
+$screen-size-l: 1024px;
+$screen-size-xl: 1920px;
+
+@mixin on-mobile {
+  @media screen and (min-width: $screen-size-s) and (max-width: $screen-size-m) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: $screen-size-m) and (max-width: $screen-size-l) {
+    @content;
+  }
+}
