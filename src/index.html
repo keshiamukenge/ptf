@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Keshia Mukenge</title>
+    <title>Keshia Mukenge | Portfolio</title>
     <link href="./scss/index.scss" rel="stylesheet" />
   </head>
   <body>
@@ -34,40 +34,83 @@
       <section class="work-section">
         <h2
           data-scroll
+          data-scroll-id="slide-text"
+          data-scroll-position="top"
           data-scroll-speed="5"
           data-scroll-direction="horizontal"
           class="work-section__title scroll-right"
         >
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
-          <span class="slide-item">Work</span>
+          <div class="container-slide-words">
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+            <span class="slide-item">Work</span>
+          </div>
         </h2>
         <div class="container-projects-list">
-          <ul>
+          <ul class="projects-list">
             <li>
-              <div>Camille Gubian - Portfolio |<span>01.01.2022</span></div>
+              <img src="./assets/images/project-1.png" />
+              <div>Camille Gubian - Portfolio<span>01.01.2022</span></div>
             </li>
             <li>
-              <div>Soul funk factory |<span>01.01.2022</span></div>
+              <img src="./assets/images/project-2.png" />
+              <div>Soul funk factory<span>01.01.2022</span></div>
             </li>
             <li>
-              <div>Out of school |<span>01.01.2022</span></div>
+              <img src="./assets/images/project-3.png" />
+              <div>WeBGL Lab<span>01.01.2022</span></div>
+            </li>
+            <li>
+              <img src="./assets/images/project-4.png" />
+              <div>Out of school<span>01.01.2022</span></div>
             </li>
           </ul>
         </div>
       </section>
       <section class="contact-section">
-        <h2>Contact me !</h2>
+        <div class="container-text-content">
+          <h2
+            data-scroll
+            data-scroll-id="contact-section-title"
+            class="contact-section-title"
+          >
+            let’s work together !
+          </h2>
+          <p
+            data-scroll
+            data-scroll-id="contact-section-text"
+            class="contact-section-text"
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+        </div>
+        <div class="container-links-content">
+          <ul class="container-links">
+            <li class="link">
+              <a href="mailto:mukenge.keshia@gmail.com">Email</a>
+            </li>
+            <li class="link">
+              <a href="#">Github</a>
+            </li>
+            <li class="link">
+              <a href="#">Linkedin</a>
+            </li>
+          </ul>
+        </div>
       </section>
+      <footer>
+        <span>All right reserved © 2023</span>
+      </footer>
     </main>
   </body>
-  <script type="module" src="./App.js"></script>
+  <script type="module" src="./app.js"></script>
 </html>

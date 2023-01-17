@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 
 export default class Plane {
-  constructor(webgl) {
+  constructor(webgl, { imgElement }) {
     this.webgl = webgl;
 
-    this.imageElement = document.querySelector('.profil-img');
+    this.imageElement = imgElement;
     this.image = {
       element: this.imageElement,
       src: this.imageElement.src,

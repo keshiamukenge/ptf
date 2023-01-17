@@ -3,19 +3,39 @@ import gsap from 'gsap';
 
 import Webgl from './js/webgl/Webgl';
 import SmoothScroll from './js/SmoothScroll';
+import TextAnimation from './js/TextAnimation';
 
 export default class App {
   constructor() {
+    this.reveal = {
+      title: false,
+    };
+
     new Webgl();
-    new SmoothScroll();
+    this.scroll = new SmoothScroll();
 
     this.setScrollTextDirection();
     this.onLoaded();
 
-    this.getParagraphWidth();
-    this.getWords();
-    this.splitedInLines({ wrapEl: 'span', wrapClass: 'line' });
-    this.revealText();
+    this.mainTitle = new TextAnimation({
+      target: document.querySelector('h1'),
+      wrapEl: 'span',
+      wrapClass: 'main-title-line',
+    });
+
+    this.contactSectionTitle = new TextAnimation({
+      target: document.querySelector('.contact-section-title'),
+      wrapEl: 'span',
+      wrapClass: 'contact-title-line',
+    });
+
+    this.contactSectionText = new TextAnimation({
+      target: document.querySelector('.contact-section-text'),
+      wrapEl: 'span',
+      wrapClass: 'contact-title-line',
+    });
+
+    this.revealTextOnScroll();
   }
 
   setScrollTextDirection() {
@@ -53,72 +73,47 @@ export default class App {
   }
 
   onLoaded() {
-    window.onload = this.addCursor();
+    window.onload = () => {
+      this.addCursor();
+      this.revealSplitingText({ element: this.mainTitle.text.querySelectorAll('span'), delay: 0.5 });
+    };
   }
 
   // TEXT ANIMATION
-  getParagraphWidth() {
-    this.text = null;
-    this.containerTextWidth = 0;
+  revealSlideWords() {
+    this.element = document.querySelector('.container-slide-words');
 
-    this.text = document.querySelector('h1');
-    this.containerTextWidth = this.text.getBoundingClientRect().width;
-  }
-
-  getWords() {
-    this.words = [];
-
-    this.words = this.text.innerText.split(/( )/g);
-    this.text.innerHTML = this.words
-      .map((word) => `<span>${word}</span>`)
-      .join('');
-  }
-
-  splitedInLines({ wrapEl, wrapClass }) {
-    this.lines = [];
-    this.line = [];
-    this.lineWidth = 0;
-    this.lineHeight = 101;
-
-    this.spans = this.text.querySelectorAll('span');
-    this.spans.forEach((span) => {
-      const spanWidth = span.getBoundingClientRect().width;
-      if (this.lineWidth + spanWidth <= this.containerTextWidth) {
-        this.line.push(span);
-        this.lineWidth += spanWidth;
-      } else {
-        this.lines = [...this.lines, this.line];
-        this.line = [];
-        this.lineWidth = 0;
-        this.line.push(span);
-        this.lineWidth += spanWidth;
-      }
+    gsap.to(this.element, {
+      duration: 0.8,
+      y: 0,
     });
-    if (this.line.length) this.lines = [...this.lines, this.line];
-    const newLines = this.lines
-      .map(
-        (line, id) => `
-          <div class="container-line${id}">
-            <${wrapEl} class=${wrapClass + id}>
-              ${line.map((span) => span.innerText).join('')}
-            </${wrapEl}>
-          </div>
-        `,
-      )
-      .join('');
-    this.text.innerHTML = newLines;
   }
 
-  revealText() {
-    const timeline = gsap.timeline({ delay: 0.5 });
-    const linesContent = document.querySelectorAll('h1 div span');
+  revealSplitingText({ element, delay, duration }) {
+    const timeline = gsap.timeline({ delay: delay || 0 });
+    const linesContent = element;
 
     linesContent.forEach((lineContent) => {
       timeline.to(lineContent, {
-        duration: 0.8,
+        duration: duration || 0.8,
         y: 0,
-        ease: 'power3.out',
       }, '<5%');
+    });
+  }
+
+  revealTextOnScroll() {
+    this.scroll.instance.on('scroll', (args) => {
+      if (typeof args.currentElements['slide-text'] === 'object' && this.scroll.instance.scroll.els['slide-text'].progress > 0.2) {
+        this.revealSlideWords();
+      }
+
+      if (typeof args.currentElements['contact-section-title'] === 'object' && this.scroll.instance.scroll.els['contact-section-title'].progress > 0.2) {
+        this.revealSplitingText({ element: this.contactSectionTitle.text.querySelectorAll('span'), duration: 0.7 });
+      }
+
+      if (typeof args.currentElements['contact-section-text'] === 'object' && this.scroll.instance.scroll.els['contact-section-text'].progress > 0.2) {
+        this.revealSplitingText({ element: this.contactSectionText.text.querySelectorAll('span'), duration: 0.7 });
+      }
     });
   }
 }

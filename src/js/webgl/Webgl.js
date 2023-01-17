@@ -37,8 +37,25 @@ export default class Webgl {
 
     this.postProcessing = new PostProcessing(this);
 
-    this.plane = new Plane(this);
-    this.scene.add(this.plane.instance);
+    this.addPlanes();
+  }
+
+  addPlanes() {
+    this.projectsImages = document.querySelectorAll('ul.projects-list li img');
+    this.projectImagesPlanes = [];
+
+    this.profilPicturePlane = new Plane(this, { imgElement: document.querySelector('.profil-img') });
+    this.scene.add(this.profilPicturePlane.instance);
+
+    this.projectsImages.forEach((projectImage) => {
+      const plane = new Plane(this, { imgElement: projectImage });
+      this.projectImagesPlanes = [
+        ...this.projectImagesPlanes,
+        plane,
+      ];
+
+      this.scene.add(plane.instance);
+    });
   }
 
   onResizeWindow() {
@@ -59,13 +76,24 @@ export default class Webgl {
     });
   }
 
+  updatePlanes() {
+    this.profilPicturePlane.updateImageSize();
+    this.profilPicturePlane.updateImagePosition();
+    this.profilPicturePlane.updatePlaneSize();
+    this.profilPicturePlane.updatePlanePosition();
+
+    this.projectImagesPlanes.forEach((projectImagePlane) => {
+      projectImagePlane.updateImageSize();
+      projectImagePlane.updateImagePosition();
+      projectImagePlane.updatePlaneSize();
+      projectImagePlane.updatePlanePosition();
+    });
+  }
+
   animate() {
     requestAnimationFrame(() => this.animate());
 
-    this.plane.updateImageSize();
-    this.plane.updateImagePosition();
-    this.plane.updatePlaneSize();
-    this.plane.updatePlanePosition();
+    this.updatePlanes();
 
     this.mouse.getVelocity();
 
