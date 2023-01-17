@@ -11,6 +11,8 @@ html {
     text-align: center;
     height: fit-content;
     text-transform: uppercase;
+    max-width: $screen-size-xl;
+    margin: auto;
 
     .cursor {
       position: fixed;
@@ -21,12 +23,28 @@ html {
       transform: translate(-50%, -50%);
       visibility: hidden;
       z-index: 0;
+
+      @include on-mobile {
+        display: none;
+      }
+
+      @include on-tablet {
+        display: none;
+      }
     }
 
     header {
       width: 100%;
       height: fit-content;
       padding: 1rem 4rem;
+
+      @include on-mobile {
+        padding: 1rem 2rem;
+      }
+
+      @include on-tablet {
+        padding: 1rem 2rem;
+      }
 
       nav {
         width: fit-content;
@@ -47,10 +65,23 @@ html {
         margin: $desktopMargin;
         height: 100vh;
 
+        @include on-mobile {
+          margin: $mobilepMargin;
+          height: fit-content;
+        }
+
+        @include on-tablet {
+          margin: $tabletMargin;
+        }
+
         .container-content {
           width: 100%;
           height: 100%;
           display: flex;
+
+          @include on-mobile {
+            flex-direction: column;
+          }
 
           .text-content {
             width: 100%;
@@ -58,6 +89,10 @@ html {
             display: flex;
             flex-direction: column;
             padding-bottom: 10rem;
+
+            @include on-mobile {
+              padding: 5rem 0;
+            }
 
             h1 {
               font-size: 60px;
@@ -67,6 +102,19 @@ html {
               text-align: justify;
               text-align-last: justify;
               line-height: 70px;
+
+              @include on-mobile {
+                font-size: 40px;
+                line-height: 45px;
+                width: 100%;
+              }
+
+              @include on-tablet {
+                font-size: 45px;
+                line-height: 50px;
+                width: 100%;
+                margin: auto;
+              }
 
               div {
                 width: fit-content;
@@ -106,6 +154,20 @@ html {
               height: auto;
               margin: auto;
               display: block;
+
+              @include on-mobile {
+                visibility: visible;
+                width: 100%;
+                object-fit: cover;
+                height: 200px;
+                margin: initial;
+              }
+
+              @include on-tablet {
+                visibility: visible;
+                object-fit: cover;
+                width: 85%;
+              }
             }
           }
         }
@@ -115,6 +177,14 @@ html {
         height: fit-content;
         width: 100%;
         margin: 10rem 0;
+
+        @include on-mobile {
+          margin: 6rem 0;
+        }
+
+        @include on-tablet {
+          margin: 0;
+        }
 
         h2 {
           width: fit-content;
@@ -127,6 +197,10 @@ html {
 
             .slide-item {
               margin-right: 5rem;
+
+              @include on-mobile {
+                margin-right: 3rem;
+              }
             }
           }
         }
@@ -155,12 +229,26 @@ html {
           padding: 6rem 4rem 0 4rem;
           width: 100%;
 
+          @include on-mobile {
+            padding: 6rem 2rem 0 2rem;
+          }
+
+          @include on-tablet {
+            padding: 6rem 2rem 0 2rem;
+          }
+
           ul {
             width: 100%;
             height: fit-content;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 4rem;
+
+            @include on-mobile {
+              display: flex;
+              flex-direction: column;
+              grid-gap: 1rem;
+            }
 
             li {
               width: fit-content;
@@ -177,6 +265,14 @@ html {
                 max-height: 100%;
                 object-fit: cover;
                 visibility: hidden;
+
+                @include on-mobile {
+                  visibility: visible;
+                }
+
+                @include on-tablet {
+                  visibility: visible;
+                }
               }
 
               div {
@@ -197,19 +293,38 @@ html {
       }
 
       .contact-section {
-        margin: 0 4rem;
+        margin: $desktopMargin;
         padding: 10rem 0;
         height: fit-content;
         text-align: left;
         display: flex;
 
+        @include on-mobile {
+          padding: 0;
+          flex-direction: column;
+          margin: 0 2rem 3rem 2rem;
+        }
+
+        @include on-tablet {
+          margin: $tabletMargin;
+          padding: 8rem 0;
+        }
+
         .container-text-content {
           width: 100%;
+
+          @include on-mobile {
+            margin-bottom: 3rem;
+          }
 
           h2 {
             width: 100%;
             margin-bottom: 2rem;
             font-size: 75px;
+
+            @include on-mobile {
+              font-size: 70px;
+            }
 
             div {
               overflow: hidden;
@@ -225,6 +340,14 @@ html {
 
           p {
             width: 50%;
+
+            @include on-mobile {
+              width: 100%;
+            }
+
+            @include on-tablet {
+              width: 70%;
+            }
 
             div {
               overflow: hidden;
@@ -243,8 +366,16 @@ html {
           width: 100%;
           display: flex;
 
+          @include on-tablet {
+            width: fit-content;
+          }
+
           .container-links {
             margin: auto auto 0 0;
+
+            @include on-tablet {
+              padding: 0 5rem 0 2rem;
+            }
 
             .link {
               font-weight: 400;
@@ -281,6 +412,15 @@ html {
         padding: 0 4rem 4rem 4rem;
         text-align: left;
 
+        @include on-mobile {
+          padding: 0 2rem 1rem 2rem;
+          text-align: right;
+        }
+
+        @include on-tablet {
+          padding: 0 2rem 1rem 2rem;
+        }
+
         span {
           font-size: 12px;
           font-weight: 200;
@@ -301,6 +441,10 @@ html {
 
       h2 {
         font-size: 95px;
+
+        @include on-mobile {
+          font-size: 70px;
+        }
       }
 
       a {
@@ -317,6 +461,14 @@ html {
       bottom: 0;
       right: 0;
       z-index: -1;
+
+      @include on-mobile {
+        display: none !important;
+      }
+
+      @include on-tablet {
+        display: none !important;
+      }
     }
   }
 }
