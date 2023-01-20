@@ -13,6 +13,11 @@ html {
     text-transform: uppercase;
     max-width: $screen-size-xl;
     margin: auto;
+    overflow-y: hidden;
+
+    @include on-large-desktop {
+      overflow-y: initial;
+    }
 
     .cursor {
       position: fixed;
@@ -54,12 +59,41 @@ html {
           color: $white-color;
           text-decoration: none;
           font-family: $font;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
 
     main {
       width: 100%;
+
+      h1,
+      h2 {
+        font-weight: $title-weight;
+      }
+
+      p {
+        font-weight: $text-weight;
+        font-size: 20px;
+        line-height: 25px;
+      }
+
+      h2 {
+        font-size: 95px;
+
+        @include on-mobile {
+          font-size: 70px;
+        }
+      }
+
+      a {
+        font-size: 30px;
+        color: $white-color;
+        text-decoration: none;
+      }
 
       .hero-section {
         margin: $desktopMargin;
@@ -190,6 +224,13 @@ html {
           width: fit-content;
           position: relative;
           overflow: hidden;
+          animation: slideToRight 10s linear infinite;
+
+          @keyframes slideToRight {
+            0% {
+              transform: translate3d(-50%, 0, 0);
+            }
+          }
 
           .container-slide-words {
             display: flex;
@@ -201,26 +242,6 @@ html {
               @include on-mobile {
                 margin-right: 3rem;
               }
-            }
-          }
-        }
-
-        .scroll-right {
-          animation: slideToRight 10s linear infinite;
-
-          @keyframes slideToRight {
-            0% {
-              transform: translate3d(-50%, 0, 0);
-            }
-          }
-        }
-
-        .scroll-left {
-          animation: slideToLeft 10s linear infinite;
-
-          @keyframes slideToLeft {
-            100% {
-              transform: translate3d(-50%, 0, 0);
             }
           }
         }
@@ -260,31 +281,91 @@ html {
                 cursor: pointer;
               }
 
+              a {
+                height: 100%;
+                width: 100%;
+                display: block;
+
+                img {
+                  max-width: 100%;
+                  max-height: 100%;
+                  object-fit: cover;
+                  visibility: hidden;
+
+                  @include on-mobile {
+                    visibility: visible;
+                  }
+
+                  @include on-tablet {
+                    visibility: visible;
+                  }
+                }
+
+                div {
+                  margin-top: 15px;
+                  text-align: left;
+                  display: flex;
+                  flex-direction: column;
+
+                  span {
+                    display: block;
+                  }
+
+                  span.project-title {
+                    font-size: 18px;
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                  }
+
+                  span.project-date {
+                    opacity: 0.5;
+                    font-size: 16px;
+                  }
+
+                  span.project-techno {
+                    margin-bottom: 10px;
+                    opacity: 0.5;
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+
+            li.in-progress {
+              opacity: 0.5;
+
+              &:hover {
+                cursor: initial;
+              }
+
               img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: cover;
                 visibility: hidden;
-
-                @include on-mobile {
-                  visibility: visible;
-                }
-
-                @include on-tablet {
-                  visibility: visible;
-                }
               }
 
               div {
-                font-size: 18px;
-                font-weight: 400;
-                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
                 text-align: left;
+                margin-top: 15px;
 
                 span {
+                  margin-bottom: 10px;
+                }
+
+                span.project-title {
+                  font-size: 18px;
+                  font-weight: 400;
                   margin-top: 10px;
-                  opacity: 0.5;
-                  display: block;
+                }
+
+                span.project-techno {
+                  margin-bottom: 10px;
+                  font-size: 14px;
+                }
+
+                .in-progress-label {
+                  text-transform: lowercase;
+                  font-size: 12px;
                 }
               }
             }
@@ -317,13 +398,17 @@ html {
             margin-bottom: 3rem;
           }
 
+          @include on-large-desktop {
+            padding-right: 5rem;
+          }
+
           h2 {
             width: 100%;
             margin-bottom: 2rem;
             font-size: 75px;
 
             @include on-mobile {
-              font-size: 70px;
+              font-size: 50px;
             }
 
             div {
@@ -426,31 +511,6 @@ html {
           font-weight: 200;
           text-transform: none;
         }
-      }
-
-      h1,
-      h2 {
-        font-weight: $title-weight;
-      }
-
-      p {
-        font-weight: $text-weight;
-        font-size: 20px;
-        line-height: 25px;
-      }
-
-      h2 {
-        font-size: 95px;
-
-        @include on-mobile {
-          font-size: 70px;
-        }
-      }
-
-      a {
-        font-size: 30px;
-        color: $white-color;
-        text-decoration: none;
       }
     }
 

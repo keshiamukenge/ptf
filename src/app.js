@@ -3,58 +3,42 @@ import gsap from 'gsap';
 
 import Webgl from './js/webgl/Webgl';
 import SmoothScroll from './js/SmoothScroll';
-import TextAnimation from './js/TextAnimation';
+import SplitText from './js/SplitText';
+import DuplicateText from './js/DuplicateText';
 
 export default class App {
   constructor() {
-    this.reveal = {
-      title: false,
-    };
-
+    this.onWindowLoaded();
     new Webgl();
+    new DuplicateText({
+      parentElement: document.querySelector('.container-slide-words'),
+      element: document.querySelector('.slide-item'),
+      wrapElement: 'span',
+    });
     this.scroll = new SmoothScroll();
 
-    this.setScrollTextDirection();
-    this.onLoaded();
-
-    this.mainTitle = new TextAnimation({
+    this.mainTitle = new SplitText({
       target: document.querySelector('h1'),
       wrapEl: 'span',
       wrapClass: 'main-title-line',
     });
 
-    this.contactSectionTitle = new TextAnimation({
+    this.contactSectionTitle = new SplitText({
       target: document.querySelector('.contact-section-title'),
       wrapEl: 'span',
       wrapClass: 'contact-title-line',
     });
 
-    this.contactSectionText = new TextAnimation({
+    this.contactSectionText = new SplitText({
       target: document.querySelector('.contact-section-text'),
       wrapEl: 'span',
-      wrapClass: 'contact-title-line',
+      wrapClass: 'contact-text-line',
     });
 
     this.revealTextOnScroll();
   }
 
-  setScrollTextDirection() {
-    this.scrollText = document.querySelector('.work-section__title');
-
-    window.addEventListener('wheel', (event) => {
-      if (event.deltaY < 0) {
-        this.scrollText.dataset.scrollSpeed = 5;
-        this.scrollText.classList.remove('scroll-left');
-        this.scrollText.classList.add('scroll-right');
-      } else {
-        this.scrollText.dataset.scrollSpeed = -5;
-        this.scrollText.classList.add('scroll-left');
-        this.scrollText.classList.remove('scroll-right');
-      }
-    });
-  }
-
-  addCursor() {
+  setCursorPosition() {
     this.cursor = document.querySelector('.cursor');
     this.isVisible = false;
 
@@ -72,14 +56,14 @@ export default class App {
     });
   }
 
-  onLoaded() {
+  onWindowLoaded() {
     window.onload = () => {
-      this.addCursor();
+      this.setCursorPosition();
       this.revealSplitingText({ element: this.mainTitle.text.querySelectorAll('span'), delay: 0.5 });
     };
   }
 
-  // TEXT ANIMATION
+  // TEXT ANIMATIONS
   revealSlideWords() {
     this.element = document.querySelector('.container-slide-words');
 
@@ -89,6 +73,7 @@ export default class App {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   revealSplitingText({ element, delay, duration }) {
     const timeline = gsap.timeline({ delay: delay || 0 });
     const linesContent = element;
