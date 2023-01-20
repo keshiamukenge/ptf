@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Keshia Mukenge Portfolio - Creative front-end developer | WebGL | Vue | React"
+    />
     <title>Keshia Mukenge | Portfolio</title>
     <link href="./scss/index.scss" rel="stylesheet" />
   </head>
@@ -18,17 +22,17 @@
           <div class="text-content">
             <h1>
               Hello there, I'm Keshia. I'm creative developer and available for
-              work.
+              freelance work.
             </h1>
           </div>
-          <div class="image-content">
+          <figure class="image-content">
             <img
               data-scroll
               data-scroll-speed="5"
               class="profil-img"
-              src="./assets/images/1.png"
+              src="./assets/images/1.webp"
             />
-          </div>
+          </figure>
         </div>
       </section>
       <section class="work-section">
@@ -42,35 +46,57 @@
         >
           <div class="container-slide-words">
             <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
-            <span class="slide-item">Work</span>
           </div>
         </h2>
         <div class="container-projects-list">
           <ul class="projects-list">
             <li>
-              <img src="./assets/images/project-1.png" />
-              <div>Camille Gubian - Portfolio<span>01.01.2022</span></div>
+              <a target="_blank" href="https://camillegubian.fr/">
+                <img
+                  alt="image d'illustration du portfolio de Camille Gubian"
+                  src="./assets/images/project-1.webp"
+                />
+                <div>
+                  <span class="project-title">Camille Gubian - Portfolio</span>
+                  <span class="project-techno">Vue | Nuxt | CMS Prismic</span>
+                  <span class="project-date">26.08.2022</span>
+                </div>
+              </a>
+            </li>
+            <li class="in-progress">
+              <img
+                alt="image d'illustration du site de Soul fun factory"
+                src="./assets/images/project-2.webp"
+              />
+              <div>
+                <span class="project-title">Soul funk factory</span>
+                <span class="project-techno">Vue | Nuxt | CMS Prismic</span>
+                <span class="in-progress-label">work in progress..</span>
+              </div>
+            </li>
+            <li class="in-progress">
+              <img
+                alt="image d'illustration du projet Webgl lab"
+                src="./assets/images/project-3.webp"
+              />
+              <div>
+                <span class="project-title">WebGL Lab</span>
+                <span class="project-techno">ThreeJS</span>
+                <span class="in-progress-label">work in progress..</span>
+              </div>
             </li>
             <li>
-              <img src="./assets/images/project-2.png" />
-              <div>Soul funk factory<span>01.01.2022</span></div>
-            </li>
-            <li>
-              <img src="./assets/images/project-3.png" />
-              <div>WeBGL Lab<span>01.01.2022</span></div>
-            </li>
-            <li>
-              <img src="./assets/images/project-4.png" />
-              <div>Out of school<span>01.01.2022</span></div>
+              <a target="_blank" href="https://outofschool.vercel.app/">
+                <img
+                  alt="image d'illustration du projet Out of school"
+                  src="./assets/images/project-4.webp"
+                />
+                <div>
+                  <span class="project-title">Out of school</span>
+                  <span class="project-techno">React | ThreeJS</span>
+                  <span class="project-date">12.06.2022</span>
+                </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -99,10 +125,12 @@
               <a href="mailto:mukenge.keshia@gmail.com">Email</a>
             </li>
             <li class="link">
-              <a href="#">Github</a>
+              <a href="https://github.com/keshiamukenge">Github</a>
             </li>
             <li class="link">
-              <a href="#">Linkedin</a>
+              <a href="https://www.linkedin.com/in/keshia-m-5a93a2121/"
+                >Linkedin</a
+              >
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-export default class TextAnimation {
+export default class SplitText {
   constructor({
     target, wrapEl, wrapClass,
   }) {
