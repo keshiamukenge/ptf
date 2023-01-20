@@ -19,13 +19,19 @@ $screen-size-l: 1024px;
 $screen-size-xl: 1920px;
 
 @mixin on-mobile {
-  @media screen and (min-width: $screen-size-s) and (max-width: $screen-size-m) {
+  @media screen and (max-width: $screen-size-m) {
     @content;
   }
 }
 
 @mixin on-tablet {
   @media screen and (min-width: $screen-size-m) and (max-width: $screen-size-l) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media screen and (min-width: $screen-size-xl) {
     @content;
   }
 }

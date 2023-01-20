@@ -94,12 +94,7 @@ export default class Webgl {
     requestAnimationFrame(() => this.animate());
 
     this.updatePlanes();
-
     this.mouse.getVelocity();
-
-    // this.camera.updateControls();
-
-    // this.renderer.instance.render(this.scene, this.camera.instance);
     this.postProcessing.update();
   }
 }
