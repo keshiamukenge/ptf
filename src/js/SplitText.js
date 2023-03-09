@@ -1,70 +1,86 @@
 export default class SplitText {
-  constructor({
-    target, wrapEl, wrapClass,
-  }) {
-    this.getTargetWidth(target);
-    this.getWords();
-    this.splitedInLines({ wrapEl, wrapClass });
+  constructor(selector, space) {
+    const element = document.querySelector(selector);
 
-    // this.onResize({ wrapEl, wrapClass });
-  }
+    element.style.display = 'flex';
+    element.style.flexWrap = 'wrap';
 
-  getTargetWidth(target) {
-    this.text = null;
-    this.containerTextWidth = 0;
-
-    this.text = target;
-    this.containerTextWidth = this.text.getBoundingClientRect().width;
-  }
-
-  getWords() {
-    this.words = [];
-
-    this.words = this.text.innerText.split(/( )/g);
-    this.text.innerHTML = this.words
-      .map((word) => `<span>${word}</span>`)
-      .join('');
-  }
-
-  splitedInLines({ wrapEl, wrapClass }) {
+    this.element = element;
+    this.paragraph = {
+      el: element,
+      text: element.innerText,
+      right: element.getBoundingClientRect().right,
+      left: element.getBoundingClientRect().left,
+    };
+    this.spans = [];
     this.lines = [];
-    this.line = [];
-    this.lineWidth = 0;
-    this.lineHeight = 101;
 
-    this.spans = this.text.querySelectorAll('span');
-    this.spans.forEach((span) => {
-      const spanWidth = span.getBoundingClientRect().width;
-      if (this.lineWidth + spanWidth <= this.containerTextWidth) {
-        this.line.push(span);
-        this.lineWidth += spanWidth;
-      } else {
-        this.lines = [...this.lines, this.line];
-        this.line = [];
-        this.lineWidth = 0;
-        this.line.push(span);
-        this.lineWidth += spanWidth;
-      }
-    });
-    if (this.line.length) this.lines = [...this.lines, this.line];
-    const newLines = this.lines
-      .map(
-        (line, id) => `
-          <div class="container-line${id}">
-            <${wrapEl} class=${wrapClass + id}>
-              ${line.map((span) => span.innerText).join('')}
-            </${wrapEl}>
-          </div>
-        `,
-      )
-      .join('');
-    this.text.innerHTML = newLines;
+    this.splitWords(space);
+    this.wrapInSpans();
+    this.createLines();
+    this.injectInHtml(selector);
   }
 
-  onResize({ wrapEl, wrapClass }) {
-    window.addEventListener('resize', () => {
-      this.getWords();
-      this.splitedInLines({ wrapEl, wrapClass });
+  splitWords(space) {
+    this.words = this.paragraph.el.textContent.trim().split(/\s+/);
+
+    this.words.forEach((word) => {
+      const span = document.createElement('span');
+      span.style.paddingRight = space;
+      span.textContent = word;
+      this.spans = [
+        ...this.spans,
+        {
+          el: span,
+        },
+      ];
+      this.paragraph.el.appendChild(span);
+    });
+  }
+
+  wrapInSpans() {
+    this.spans = this.spans.map((obj) => ({
+      ...obj,
+      top: obj.el.getBoundingClientRect().top,
+    }));
+  }
+
+  createLines() {
+    let newLine = '';
+    let currentLineId = 0;
+
+    for (let i = 0; i < this.spans.length; i++) {
+      const currentId = i;
+      const prevId = i === 0 ? i : i - 1;
+
+      if (this.spans[prevId].top < this.spans[currentId].top) {
+        this.lines = [...this.lines, newLine];
+        newLine = `${this.spans[currentId].el.textContent}`;
+        this.lines[currentLineId] = this.lines[currentLineId].trim();
+        currentLineId += 1;
+      } else {
+        newLine += ` ${this.spans[i].el.textContent}`;
+      }
+    }
+
+    this.lines = [...this.lines, newLine];
+    this.lines[currentLineId] = this.lines[currentLineId].trim();
+  }
+
+  injectInHtml(selector) {
+    const newHtmlElement = document.querySelector(selector);
+    newHtmlElement.innerHTML = '';
+
+    this.lines.forEach((line) => {
+      const span = document.createElement('span');
+      span.style.display = 'block';
+      span.textContent = line;
+
+      const div = document.createElement('div');
+      div.style.overflow = 'hidden';
+      div.append(span);
+
+      newHtmlElement.append(div);
     });
   }
 }
