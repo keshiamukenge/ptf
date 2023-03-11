@@ -65,10 +65,11 @@ html.has-scroll-dragging {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: $white-color;
   width: 5px;
   cursor: -webkit-grab;
   cursor: grab;
+  // background-color: $white-color;
+  // mix-blend-mode: difference;
 }
 .has-scroll-dragging .c-scrollbar_thumb {
   cursor: -webkit-grabbing;

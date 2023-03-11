@@ -8,12 +8,11 @@ export default class MouseTracking {
     this.coordinates = new THREE.Vector2(0, 0);
     this.followMouse = new THREE.Vector2(0, 0);
     this.prevMouse = new THREE.Vector2(0, 0);
+
+    this.raycaster = new THREE.Raycaster();
   }
 
   onMouseMove(event) {
-    // this.coordinates.x = (event.clientX / this.webgl.sizes.width) * 2 - 1;
-    // this.coordinates.y = -(event.clientY / this.webgl.sizes.height) * 2 + 1;
-
     this.coordinates.x = event.clientX / this.webgl.sizes.width;
     this.coordinates.y = 1.0 - event.clientY / this.webgl.sizes.height;
   }
@@ -29,5 +28,10 @@ export default class MouseTracking {
 
     this.prevMouse.x = this.coordinates.x;
     this.prevMouse.y = this.coordinates.y;
+  }
+
+  update() {
+    this.raycaster.setFromCamera(this.coordinates, this.webgl.camera.instance);
+    this.intersects = this.raycaster.intersectObjects(this.webgl.scene.children);
   }
 }

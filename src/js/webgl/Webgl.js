@@ -9,7 +9,7 @@ import {
 } from './instances';
 
 export default class Webgl {
-  constructor() {
+  constructor(scroll) {
     window.webgl = this;
 
     this.sizes = {
@@ -17,6 +17,7 @@ export default class Webgl {
       height: window.innerHeight,
       aspect: window.innerWidth / window.innerHeight,
     };
+    this.scroll = scroll;
 
     this.initWebgl();
 
@@ -33,19 +34,21 @@ export default class Webgl {
     this.renderer = new Renderer(this);
     this.mouse = new MouseTracking(this);
 
-    document.body.appendChild(this.renderer.instance.domElement);
+    const containerProjectSection = document.querySelector('.section-project-background-container');
+    containerProjectSection.appendChild(this.renderer.instance.domElement);
+    this.renderer.instance.domElement.setAttribute('data-scroll', '');
+    this.renderer.instance.domElement.setAttribute('data-scroll-sticky', '');
+    this.renderer.instance.domElement.setAttribute('data-scroll-target', '#body');
 
     this.postProcessing = new PostProcessing(this);
 
     this.addPlanes();
+    this.camera.update();
   }
 
   addPlanes() {
-    this.projectsImages = document.querySelectorAll('ul.projects-list li img');
+    this.projectsImages = document.querySelectorAll('ul.projects-section__container-list li img');
     this.projectImagesPlanes = [];
-
-    this.profilPicturePlane = new Plane(this, { imgElement: document.querySelector('.profil-img') });
-    this.scene.add(this.profilPicturePlane.instance);
 
     this.projectsImages.forEach((projectImage) => {
       const plane = new Plane(this, { imgElement: projectImage });
@@ -73,15 +76,11 @@ export default class Webgl {
   onMouseMove() {
     window.addEventListener('mousemove', (event) => {
       this.mouse.onMouseMove(event);
+      this.mouse.update();
     });
   }
 
   updatePlanes() {
-    this.profilPicturePlane.updateImageSize();
-    this.profilPicturePlane.updateImagePosition();
-    this.profilPicturePlane.updatePlaneSize();
-    this.profilPicturePlane.updatePlanePosition();
-
     this.projectImagesPlanes.forEach((projectImagePlane) => {
       projectImagePlane.updateImageSize();
       projectImagePlane.updateImagePosition();
