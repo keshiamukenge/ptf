@@ -15,25 +15,6 @@ html {
       overflow-y: initial;
     }
 
-    .cursor {
-      position: fixed;
-      width: 30px;
-      height: 30px;
-      border: 1px solid $black-color;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      visibility: hidden;
-      z-index: 0;
-
-      @include on-mobile {
-        display: none;
-      }
-
-      @include on-tablet {
-        display: none;
-      }
-    }
-
     header {
       width: 100%;
       height: fit-content;
@@ -43,17 +24,32 @@ html {
       justify-content: right;
       z-index: 999;
 
+      @include on-mobile {
+        position: fixed;
+        top: 0;
+      }
+
+      @include on-tablet {
+        position: fixed;
+        top: 0;
+      }
+
       .star-icon {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding-top: 1rem;
 
         @include on-mobile {
           padding-top: 0;
           position: initial;
           transform: translate(0, 0);
+          width: 2.5rem;
+        }
+
+        @include on-tablet {
+          width: 3rem;
+          padding-top: 1rem;
         }
       }
 
@@ -86,10 +82,6 @@ html {
           svg {
             width: auto;
             height: 1.25rem;
-
-            g {
-              mix-blend-mode: difference;
-            }
           }
         }
 
@@ -206,7 +198,7 @@ html {
 
         @include on-tablet {
           width: 100%;
-          padding-left: 60%;
+          padding-right: 50%;
         }
 
         @include on-mobile {
@@ -218,228 +210,264 @@ html {
   }
 }
 
-.projects-section {
-  height: fit-content;
-  width: 100%;
-  margin: 5rem 0;
-  position: relative;
+.section-project-background-container {
   background-color: $black-color;
-  padding: 4rem;
-  color: $white-color;
+  position: relative;
+  z-index: 2;
 
-  @include on-mobile {
-    margin: 6rem 0 0 0;
-    padding: 4rem 2rem;
-  }
-
-  @include on-tablet {
-    margin: 0;
-    padding: 4rem 2rem;
-  }
-
-  ul {
-    width: 100%;
+  .projects-section {
     height: fit-content;
-    margin: 7rem auto 0 auto;
+    width: 100%;
+    margin-top: 5rem;
+    position: relative;
+    padding: 4rem;
+    color: $white-color;
 
     @include on-mobile {
-      display: flex;
-      flex-direction: column;
-      grid-gap: 1rem;
+      margin: 6rem 0 0 0;
+      padding: 4rem 2rem;
     }
 
-    li.projects-section__item {
-      width: 100%;
-      height: 30rem;
-      margin-bottom: 25rem;
+    @include on-tablet {
+      margin: 0;
+      padding: 4rem 2rem;
+    }
 
-      @include on-tablet {
-        height: fit-content;
-        margin-bottom: 16rem;
-      }
+    ul {
+      width: 100%;
+      height: fit-content;
+      margin: 7rem auto 0 auto;
 
       @include on-mobile {
-        height: fit-content;
-        margin-bottom: 8rem;
+        display: flex;
+        flex-direction: column;
+        grid-gap: 1rem;
       }
 
-      .container-title {
+      li.projects-section__item {
         width: 100%;
         height: fit-content;
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.8rem;
+        margin-bottom: 25rem;
 
-        @include on-tablet {
-          margin-bottom: 4rem;
+        &:last-child {
+          margin-bottom: 10rem;
         }
-
-        @include on-mobile {
-          margin-bottom: 2rem;
-        }
-
-        span {
-          font-family: $title-font;
-          font-size: 6.25rem;
-          width: 10%;
-          text-align: center;
-
-          @include on-mobile {
-            margin-right: 6rem;
-          }
-        }
-
-        h2 {
-          width: 30%;
-
-          @include on-tablet {
-            width: 40%;
-          }
-
-          @include on-mobile {
-            width: 100%;
-          }
-        }
-      }
-
-      .container-project-content {
-        height: 60vh;
-        width: 100%;
-        display: flex;
-        gap: 8rem;
 
         @include on-tablet {
           height: fit-content;
-          flex-direction: column-reverse;
-          gap: 2rem;
+          margin-bottom: 16rem;
         }
 
         @include on-mobile {
           height: fit-content;
-          flex-direction: column-reverse;
-          gap: 2rem;
+          margin-bottom: 8rem;
         }
 
-        .projects-section__container-img {
+        .container-title {
           width: 100%;
-          height: 100%;
-
-          @include on-tablet {
-            height: 62vh;
-          }
-
-          @include on-mobile {
-            height: 55vh;
-          }
-
-          img {
-            visibility: visible;
-            width: 80%;
-            height: 100%;
-            object-fit: cover;
-            float: right;
-
-            @include on-mobile {
-              visibility: visible;
-            }
-
-            @include on-tablet {
-              visibility: visible;
-              width: 100%;
-            }
-
-            @include on-mobile {
-              visibility: visible;
-              width: 100%;
-            }
-          }
-        }
-
-        .projects-section__item-infos {
-          text-align: left;
+          height: fit-content;
           display: flex;
-          flex-direction: column;
-          width: 30%;
+          align-items: center;
+          margin-bottom: 1.8rem;
 
           @include on-tablet {
-            height: fit-content;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 1rem 8rem;
-            width: 100%;
-            padding-left: 10%;
             margin-bottom: 4rem;
           }
 
           @include on-mobile {
-            width: 100%;
-            padding-left: calc(6rem + 10%);
+            margin-bottom: 2rem;
           }
 
           span {
-            display: block;
-            font-size: 1rem;
-            font-family: $body-font;
-            margin-bottom: 1.125rem;
-            line-height: 18px;
+            font-family: $title-font;
+            font-size: 6.25rem;
+            width: 10%;
+            text-align: center;
+
+            @include on-mobile {
+              margin-right: 6rem;
+            }
           }
 
-          &-infos-date {
-            font-family: $body-font;
-            opacity: 0.5;
-            font-size: 14px;
-          }
+          h2 {
+            width: 30%;
 
-          &-infos-techno {
-            margin-bottom: 1.125rem;
-            font-family: $body-font;
-            opacity: 0.5;
-            font-size: 14px;
+            @include on-tablet {
+              width: 40%;
+            }
+
+            @include on-mobile {
+              width: 100%;
+            }
           }
         }
 
-        a {
-          height: 100%;
+        .container-project-content {
+          height: 60vh;
           width: 100%;
-          display: block;
+          display: flex;
+          gap: 8rem;
+
+          @include on-tablet {
+            height: fit-content;
+            flex-direction: column-reverse;
+            gap: 2rem;
+          }
+
+          @include on-mobile {
+            height: fit-content;
+            flex-direction: column-reverse;
+            gap: 2rem;
+          }
+
+          .projects-section__container-img {
+            width: 100%;
+            height: 100%;
+
+            @include on-tablet {
+              height: 62vh;
+            }
+
+            @include on-mobile {
+              height: 55vh;
+            }
+
+            img {
+              visibility: hidden;
+              width: 80%;
+              height: 100%;
+              object-fit: cover;
+              float: right;
+
+              @include on-mobile {
+                visibility: visible;
+                width: 100%;
+              }
+
+              @include on-tablet {
+                visibility: visible;
+                width: 100%;
+              }
+            }
+
+            .view-project-infos {
+              font-size: 1rem;
+              font-family: $body-font;
+              padding-left: 20%;
+              margin-top: 1rem;
+              display: block;
+              overflow: hidden;
+              width: fit-content;
+              height: fit-content;
+              line-height: 1.5rem;
+
+              @include on-mobile {
+                padding-left: 0;
+              }
+
+              @include on-tablet {
+                padding-left: 0;
+              }
+
+              span {
+                display: flex;
+                display: block;
+                transform: translateY(102%);
+                color: $white-color;
+
+                svg {
+                  margin-left: 0.3rem;
+                }
+              }
+            }
+          }
+
+          .projects-section__item-infos {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+
+            @include on-tablet {
+              height: fit-content;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-gap: 1rem 8rem;
+              width: 100%;
+              padding-left: 10%;
+              margin-bottom: 4rem;
+            }
+
+            @include on-mobile {
+              width: 100%;
+              padding-left: calc(6rem + 10%);
+            }
+
+            span {
+              display: block;
+              font-size: 1rem;
+              font-family: $body-font;
+              margin-bottom: 1.125rem;
+              line-height: 18px;
+            }
+
+            &-infos-date {
+              font-family: $body-font;
+              opacity: 0.5;
+              font-size: 14px;
+            }
+
+            &-infos-techno {
+              margin-bottom: 1.125rem;
+              font-family: $body-font;
+              opacity: 0.5;
+              font-size: 14px;
+            }
+          }
+
+          a {
+            height: 100%;
+            width: 100%;
+            display: block;
+          }
         }
       }
     }
-  }
 
-  &__container-thumbnails {
-    width: 10rem;
-    position: relative;
-    float: right;
-    bottom: 210rem;
-    display: flex;
-    flex-direction: column;
+    &__container-thumbnails {
+      width: 10rem;
+      position: relative;
+      float: right;
+      bottom: 210rem;
+      display: flex;
+      flex-direction: column;
 
-    span {
-      display: block;
-      margin: auto;
-      width: 6rem;
-      height: 4rem;
-      background-color: transparent;
-      border: 1px solid $black-color;
-      position: absolute;
-      top: 0%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    img {
-      width: 5rem;
-      height: 3rem;
-      object-fit: cover;
-      margin: 1rem auto;
-
-      &:hover {
-        cursor: pointer;
+      span {
+        display: block;
+        margin: auto;
+        width: 6rem;
+        height: 4rem;
+        background-color: transparent;
+        border: 1px solid $black-color;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
-      &:last-child {
-        margin-bottom: 0;
+      img {
+        width: 5rem;
+        height: 3rem;
+        object-fit: cover;
+        margin: 1rem auto;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }

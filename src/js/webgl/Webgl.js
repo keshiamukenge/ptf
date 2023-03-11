@@ -34,7 +34,11 @@ export default class Webgl {
     this.renderer = new Renderer(this);
     this.mouse = new MouseTracking(this);
 
-    document.body.appendChild(this.renderer.instance.domElement);
+    const containerProjectSection = document.querySelector('.section-project-background-container');
+    containerProjectSection.appendChild(this.renderer.instance.domElement);
+    this.renderer.instance.domElement.setAttribute('data-scroll', '');
+    this.renderer.instance.domElement.setAttribute('data-scroll-sticky', '');
+    this.renderer.instance.domElement.setAttribute('data-scroll-target', '#body');
 
     this.postProcessing = new PostProcessing(this);
 

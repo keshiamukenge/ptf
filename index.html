@@ -11,35 +11,42 @@
     <title>Keshia Mukenge | Portfolio</title>
     <link href="./src/scss/index.scss" rel="stylesheet" />
   </head>
-  <body id="body">
-    <div class="cursor"></div>
-    <header>
-      <figure>
-        <picture>
-          <source
-            srcset="./src/assets/icons/star-icon-s.svg"
-            media="(max-width: 768px)"
-          />
-          <img
-            class="star-icon"
-            src="./src/assets/icons/star-icon.svg"
-            alt=""
-          />
-        </picture>
-      </figure>
+  <body id="body" data-scroll-container>
+    <header data-scroll data-scroll-sticky data-scroll-target="#body">
+      <svg
+        class="star-icon"
+        width="54"
+        height="51"
+        viewBox="0 0 54 51"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M27 2L27 49"
+          stroke="#0B090A"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <path
+          d="M2 26H52"
+          stroke="#0B090A"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <path
+          d="M43.6484 8.70709L10.4144 41.9411"
+          stroke="#0B090A"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <path
+          d="M9 8L44.3553 43.3553"
+          stroke="#0B090A"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+      </svg>
       <nav>
-        <a href="https://github.com/keshiamukenge">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="2500"
-            height="2389"
-            viewBox="0 5 1036 990"
-          >
-            <path
-              d="M0 120c0-33.334 11.667-60.834 35-82.5C58.333 15.833 88.667 5 126 5c36.667 0 66.333 10.666 89 32 23.333 22 35 50.666 35 86 0 32-11.333 58.666-34 80-23.333 22-54 33-92 33h-1c-36.667 0-66.333-11-89-33S0 153.333 0 120zm13 875V327h222v668H13zm345 0h222V622c0-23.334 2.667-41.334 8-54 9.333-22.667 23.5-41.834 42.5-57.5 19-15.667 42.833-23.5 71.5-23.5 74.667 0 112 50.333 112 151v357h222V612c0-98.667-23.333-173.5-70-224.5S857.667 311 781 311c-86 0-153 37-201 111v2h-1l1-2v-95H358c1.333 21.333 2 87.666 2 199 0 111.333-.667 267.666-2 469z"
-            />
-          </svg>
-        </a>
         <a href="https://github.com/keshiamukenge">
           <svg
             width="2500"
@@ -58,9 +65,21 @@
             </g>
           </svg>
         </a>
+        <a href="https://github.com/keshiamukenge">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="2500"
+            height="2389"
+            viewBox="0 5 1036 990"
+          >
+            <path
+              d="M0 120c0-33.334 11.667-60.834 35-82.5C58.333 15.833 88.667 5 126 5c36.667 0 66.333 10.666 89 32 23.333 22 35 50.666 35 86 0 32-11.333 58.666-34 80-23.333 22-54 33-92 33h-1c-36.667 0-66.333-11-89-33S0 153.333 0 120zm13 875V327h222v668H13zm345 0h222V622c0-23.334 2.667-41.334 8-54 9.333-22.667 23.5-41.834 42.5-57.5 19-15.667 42.833-23.5 71.5-23.5 74.667 0 112 50.333 112 151v357h222V612c0-98.667-23.333-173.5-70-224.5S857.667 311 781 311c-86 0-153 37-201 111v2h-1l1-2v-95H358c1.333 21.333 2 87.666 2 199 0 111.333-.667 267.666-2 469z"
+            />
+          </svg>
+        </a>
       </nav>
     </header>
-    <main data-scroll-container class="scroll-container">
+    <main class="scroll-container" id="main">
       <section class="hero-section">
         <div class="container-content">
           <h1>
@@ -74,191 +93,227 @@
           </p>
         </div>
       </section>
-      <section class="projects-section">
-        <ul
-          id="projects-section__items"
-          class="projects-section__container-list"
-        >
-          <li
-            id="projects-section__item__1"
-            class="projects-section__item projects-section__item__1"
+      <div class="section-project-background-container">
+        <section class="projects-section">
+          <ul
+            id="projects-section__items"
+            class="projects-section__container-list"
           >
-            <div class="container-title">
-              <span>1</span>
-              <h2>Camille G. Portfolio</h2>
-            </div>
-            <div class="container-project-content">
-              <div class="projects-section__container-img">
-                <img
-                  data-scroll
-                  data-scroll-id="project-img-1"
-                  alt="image d'illustration du portfolio de Camille Gubian"
-                  src="./src/assets/images/1.jpg"
-                />
+            <li
+              id="projects-section__item__1"
+              class="projects-section__item projects-section__item__1"
+            >
+              <div class="container-title">
+                <span>1</span>
+                <h2>Camille G. Portfolio</h2>
               </div>
-              <div class="projects-section__item-infos item__1">
-                <div>
-                  <h3>Client</h3>
-                  <span class="projects-section__item-infos-client">
-                    Camille Gubian
-                  </span>
-                </div>
-                <div>
-                  <h3>Role</h3>
-                  <span class="projects-section__item-infos-role">
-                    Web developer
-                  </span>
-                </div>
-                <div>
-                  <h3>Technologies</h3>
-                  <span class="projects-section__item-infos-techno">
-                    Vue | Nuxt | CMS Prismic
-                  </span>
-                </div>
-                <div>
-                  <h3>Date</h3>
-                  <span class="projects-section__item-infos-date">
-                    Work in progress
-                  </span>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li
-            id="projects-section__item__2"
-            class="projects-section__item projects-section__item__2"
-          >
-            <div class="container-title">
-              <span>2</span>
-              <h2>Music band website</h2>
-            </div>
-            <div class="container-project-content">
-              <div class="projects-section__container-img">
-                <img
-                  data-scroll
-                  data-scroll-id="project-img-2"
-                  alt="image d'illustration du site de Soul fun factory"
-                  src="./src/assets/images/2.jpg"
-                />
-              </div>
-              <div class="projects-section__item-infos item__2">
-                <div>
-                  <h3>Client</h3>
-                  <span class="projects-section__item-infos-client">
-                    Soul funk factory
-                  </span>
-                </div>
-                <div>
-                  <h3>Role</h3>
-                  <span class="projects-section__item-infos-role">
-                    Web developer
-                  </span>
-                </div>
-                <div>
-                  <h3>Technologies</h3>
-                  <span class="projects-section__item-infos-techno">
-                    Vue | Nuxt | CMS Prismic
-                  </span>
-                </div>
-                <div>
-                  <h3>Date</h3>
-                  <span class="projects-section__item-infos-date">
-                    Work in progress
-                  </span>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li
-            id="projects-section__item__3"
-            class="projects-section__item projects-section__item__3"
-          >
-            <div class="container-title">
-              <span>3</span>
-              <h2>Webgl Lab</h2>
-            </div>
-            <div class="container-project-content">
-              <div class="projects-section__container-img">
-                <a target="_blank" href="https://webgl-lab-hazel.vercel.app/">
+              <div class="container-project-content">
+                <div class="projects-section__container-img">
                   <img
                     data-scroll
-                    data-scroll-id="project-img-3"
-                    alt="image d'illustration du projet Webgl lab"
-                    src="./src/assets/images/3.jpg"
+                    data-scroll-id="project-img-1"
+                    alt="image d'illustration du portfolio de Camille Gubian"
+                    src="./src/assets/images/1.jpg"
                   />
-                </a>
+                </div>
+                <div class="projects-section__item-infos item__1">
+                  <div>
+                    <h3>Client</h3>
+                    <span class="projects-section__item-infos-client">
+                      Camille Gubian
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Role</h3>
+                    <span class="projects-section__item-infos-role">
+                      Web developer
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Technologies</h3>
+                    <span class="projects-section__item-infos-techno">
+                      Vue | Nuxt | CMS Prismic
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Date</h3>
+                    <span class="projects-section__item-infos-date">
+                      Work in progress
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="projects-section__item-infos item__3">
-                <div>
-                  <h3>Role</h3>
-                  <span class="projects-section__item-infos-role">
-                    Web developer
-                  </span>
-                </div>
-                <div>
-                  <h3>Technologies</h3>
-                  <span class="projects-section__item-infos-techno">
-                    Threejs | Vanilla JS
-                  </span>
-                </div>
-                <div>
-                  <h3>Date</h3>
-                  <span class="projects-section__item-infos-date">
-                    Work in progress
-                  </span>
-                </div>
+            </li>
+            <li
+              id="projects-section__item__2"
+              class="projects-section__item projects-section__item__2"
+            >
+              <div class="container-title">
+                <span>2</span>
+                <h2>Music band website</h2>
               </div>
-            </div>
-          </li>
-          <li
-            id="projects-section__item__4"
-            class="projects-section__item projects-section__item__4"
-          >
-            <div class="container-title">
-              <span>4</span>
-              <h2>Gaggenau</h2>
-            </div>
-            <div class="container-project-content">
-              <div class="projects-section__container-img">
-                <a target="_blank" href="https://gaggenau.vercel.app/">
+              <div class="container-project-content">
+                <div class="projects-section__container-img">
                   <img
                     data-scroll
-                    data-scroll-id="project-img-4"
-                    alt="image d'illustration du projet Out of school"
-                    src="./src/assets/images/5.webp"
+                    data-scroll-id="project-img-2"
+                    alt="image d'illustration du site de Soul fun factory"
+                    src="./src/assets/images/2.jpg"
                   />
-                </a>
+                </div>
+                <div class="projects-section__item-infos item__2">
+                  <div>
+                    <h3>Client</h3>
+                    <span class="projects-section__item-infos-client">
+                      Soul funk factory
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Role</h3>
+                    <span class="projects-section__item-infos-role">
+                      Web developer
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Technologies</h3>
+                    <span class="projects-section__item-infos-techno">
+                      Vue | Nuxt | CMS Prismic
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Date</h3>
+                    <span class="projects-section__item-infos-date">
+                      Work in progress
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="projects-section__item-infos item__4">
-                <div>
-                  <h3>Role</h3>
-                  <span class="projects-section__item-infos-role">
-                    Web developer
+            </li>
+            <li
+              id="projects-section__item__3"
+              class="projects-section__item projects-section__item__3"
+            >
+              <div class="container-title">
+                <span>3</span>
+                <h2>Webgl Lab</h2>
+              </div>
+              <div class="container-project-content">
+                <div class="projects-section__container-img">
+                  <a target="_blank" href="https://webgl-lab-hazel.vercel.app/">
+                    <img
+                      data-scroll
+                      data-scroll-id="project-img-3"
+                      alt="image d'illustration du projet Webgl lab"
+                      src="./src/assets/images/3.jpg"
+                    />
+                  </a>
+                  <span id="view-project-infos" class="view-project-infos">
+                    <span>
+                      Open project
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.33624 2.84003L1.76443 9.41185C1.4396 9.73667 0.912949 9.73667 0.58812 9.41185V9.41185C0.263305 9.08703 0.26329 8.56041 0.588086 8.23557L7.15914 1.66376H1.68123C1.22179 1.66376 0.849347 1.29131 0.849347 0.831878V0.831878C0.849347 0.372444 1.22179 0 1.68122 0H9.16812C9.62756 0 10 0.372444 10 0.831878V8.31878C10 8.77821 9.62756 9.15065 9.16812 9.15065V9.15065C8.70869 9.15065 8.33624 8.77821 8.33624 8.31878V2.84003Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
                   </span>
                 </div>
-                <div>
-                  <h3>Designer</h3>
-                  <span class="projects-section__item-infos-designer">
-                    Designed by Maria SHEVELEVA
-                  </span>
-                </div>
-                <div>
-                  <h3>Technologies</h3>
-                  <span class="projects-section__item-infos-techno">
-                    VueJS | TroisJS
-                  </span>
-                </div>
-                <div>
-                  <h3>Date</h3>
-                  <span class="projects-section__item-infos-date">
-                    12.06.2022
-                  </span>
+                <div class="projects-section__item-infos item__3">
+                  <div>
+                    <h3>Role</h3>
+                    <span class="projects-section__item-infos-role">
+                      Web developer
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Technologies</h3>
+                    <span class="projects-section__item-infos-techno">
+                      Threejs | Vanilla JS
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Date</h3>
+                    <span class="projects-section__item-infos-date">
+                      Started in January 2023
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
-      </section>
+            </li>
+            <li
+              id="projects-section__item__4"
+              class="projects-section__item projects-section__item__4"
+            >
+              <div class="container-title">
+                <span>4</span>
+                <h2>Gaggenau</h2>
+              </div>
+              <div class="container-project-content">
+                <div class="projects-section__container-img">
+                  <a target="_blank" href="https://gaggenau.vercel.app/">
+                    <img
+                      data-scroll
+                      data-scroll-id="project-img-4"
+                      alt="image d'illustration du projet Out of school"
+                      src="./src/assets/images/5.webp"
+                    />
+                  </a>
+                  <span id="view-project-infos" class="view-project-infos">
+                    <span>
+                      Open project
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.33624 2.84003L1.76443 9.41185C1.4396 9.73667 0.912949 9.73667 0.58812 9.41185V9.41185C0.263305 9.08703 0.26329 8.56041 0.588086 8.23557L7.15914 1.66376H1.68123C1.22179 1.66376 0.849347 1.29131 0.849347 0.831878V0.831878C0.849347 0.372444 1.22179 0 1.68122 0H9.16812C9.62756 0 10 0.372444 10 0.831878V8.31878C10 8.77821 9.62756 9.15065 9.16812 9.15065V9.15065C8.70869 9.15065 8.33624 8.77821 8.33624 8.31878V2.84003Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </div>
+                <div class="projects-section__item-infos item__4">
+                  <div>
+                    <h3>Role</h3>
+                    <span class="projects-section__item-infos-role">
+                      Web developer
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Web Designer</h3>
+                    <span class="projects-section__item-infos-designer">
+                      Maria SHEVELEVA
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Technologies</h3>
+                    <span class="projects-section__item-infos-techno">
+                      VueJS | TroisJS
+                    </span>
+                  </div>
+                  <div>
+                    <h3>Date</h3>
+                    <span class="projects-section__item-infos-date">
+                      12.06.2022
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
     </main>
   </body>
   <script type="module" src="./src/app.js"></script>
