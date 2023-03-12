@@ -9,6 +9,9 @@ export default class SmoothScroll {
     this.instance = new LocomotiveScroll({
       el: document.querySelector('[data-scroll-container]'),
       smooth: true,
+      getSpeed: true,
+      getPosition: true,
+      getDirection: true,
     });
   }
 }

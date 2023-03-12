@@ -1,17 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+@font-face {
+  font-family: 'molika';
+  src: local('molika'), url('@/assets/fonts/molika.ttf');
+}
 
-$font: 'Raleway';
+$title-font: 'molika';
+$body-font: 'Raleway';
 
 $title-weight: 400;
 $text-weight: 400;
 
-$main-color: #dfbbbb;
-$black-color: black;
-$white-color: white;
+$black-color: #0b090a;
+$white-color: #e2d5c8;
 
 $desktopMargin: 0 4rem;
 $tabletMargin: 0 2rem;
-$mobilepMargin: 0 2rem;
+$mobileMargin: 0 2rem;
 
 $screen-size-s: 320px;
 $screen-size-m: 720px;
