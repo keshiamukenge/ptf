@@ -250,7 +250,7 @@ html {
         margin-bottom: 25rem;
 
         &:last-child {
-          margin-bottom: 10rem;
+          margin-bottom: 2rem;
         }
 
         @include on-tablet {
@@ -285,7 +285,7 @@ html {
             text-align: center;
 
             @include on-mobile {
-              margin-right: 6rem;
+              margin-right: 2rem;
             }
           }
 
@@ -329,7 +329,7 @@ html {
             }
 
             @include on-mobile {
-              height: 55vh;
+              height: 35vh;
             }
 
             img {
@@ -400,7 +400,7 @@ html {
 
             @include on-mobile {
               width: 100%;
-              padding-left: calc(6rem + 10%);
+              padding-left: calc(2rem + 10%);
             }
 
             span {
