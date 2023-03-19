@@ -1,17 +1,14 @@
-import LocomotiveScroll from 'locomotive-scroll';
+import Lenis from '@studio-freight/lenis';
 
 export default class SmoothScroll {
   constructor() {
-    this.setupSmoothScroll();
+    this.instance = new Lenis();
+    this.instance.stop();
+    requestAnimationFrame(this.udpate.bind(this));
   }
 
-  setupSmoothScroll() {
-    this.instance = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true,
-      getSpeed: true,
-      getPosition: true,
-      getDirection: true,
-    });
+  udpate(time) {
+    this.instance.raf(time);
+    requestAnimationFrame(this.udpate.bind(this));
   }
 }

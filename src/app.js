@@ -1,14 +1,17 @@
-/* eslint-disable no-new */
 import gsap from 'gsap';
 
 import Webgl from './js/webgl/Webgl';
 import SmoothScroll from './js/SmoothScroll';
-
-const scroll = new SmoothScroll();
+import Loader from './js/Loader';
 
 export default class App {
   constructor() {
-    this.scroll = scroll;
+    this.scroll = new SmoothScroll();
+
+    // Preloader
+    this.loader = new Loader(() => {
+      this.scroll.instance.start();
+    });
 
     // Header
     this.starRotation = 0;
@@ -19,13 +22,10 @@ export default class App {
     this.projectsList = document.querySelectorAll('ul.projects-section__container-list li');
     this.setupProjectsInfos();
 
-    this.onWindowLoaded();
-    // this.onMouseMove();
     this.onScroll();
     this.webgl = new Webgl(this.scroll);
 
-    this.revealTextOnScroll();
-    this.rotateStarIcon();
+    // this.rotateStarIcon();
     this.onProjectImageHovered();
   }
 
@@ -44,12 +44,6 @@ export default class App {
     }
   }
 
-  onWindowLoaded() {
-    window.onload = () => {
-      this.scroll.instance.update();
-    };
-  }
-
   onMouseLeave() {
     this.images.forEach((image) => {
       image.addEventListener('mouseleave', () => {
@@ -60,37 +54,6 @@ export default class App {
           clearProps: 'all',
         });
       });
-    });
-  }
-
-  revealSlideWords() {
-    this.element = document.querySelector('.container-slide-words');
-
-    gsap.to(this.element, {
-      duration: 0.8,
-      y: 0,
-    });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  revealSplitingText({
-    element, delay, duration, stagger,
-  }) {
-    const linesContent = element;
-
-    gsap.to(linesContent, {
-      delay: delay || 0,
-      duration: duration || 0.8,
-      y: 0,
-      stagger,
-    });
-  }
-
-  revealTextOnScroll() {
-    this.scroll.instance.on('scroll', (args) => {
-      if (typeof args.currentElements['slide-text'] === 'object' || this.scroll.instance.scroll.els['slide-text']?.progress > 0.2) {
-        this.revealSlideWords();
-      }
     });
   }
 
@@ -165,37 +128,27 @@ export default class App {
 
   onScroll() {
     this.scroll.instance.on('scroll', () => {
-      this.rotateStarIcon(
-        this.scroll.instance.scroll.instance.speed,
-        this.scroll.instance.scroll.instance.direction,
-      );
-
-      gsap.to('.star-icon', {
-        rotation: this.starRotation,
-        ease: 'none',
-      });
-
       this.setHeaderColor();
     });
   }
 
-  rotateStarIcon(speed, direction) {
-    if (direction === 'down') {
-      if (Math.round(this.starRotation) === 360) {
-        this.starRotation = 0;
-        this.starRotation += 1;
-      }
+  // rotateStarIcon(speed, direction) {
+  //   if (direction === 'down') {
+  //     if (Math.round(this.starRotation) === 360) {
+  //       this.starRotation = 0;
+  //       this.starRotation += 1;
+  //     }
 
-      this.starRotation += 1;
-    } else if (direction === 'up') {
-      if (Math.round(this.starRotation) === 360) {
-        this.starRotation = 0;
-        this.starRotation -= 1;
-      }
+  //     this.starRotation += 1;
+  //   } else if (direction === 'up') {
+  //     if (Math.round(this.starRotation) === 360) {
+  //       this.starRotation = 0;
+  //       this.starRotation -= 1;
+  //     }
 
-      this.starRotation -= 1;
-    }
-  }
+  //     this.starRotation -= 1;
+  //   }
+  // }
 }
 
 new App();

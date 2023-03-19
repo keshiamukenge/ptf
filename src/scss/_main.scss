@@ -20,9 +20,12 @@ html {
       height: fit-content;
       padding: 2rem 4rem;
       display: flex;
-      position: relative;
+      position: fixed;
       justify-content: right;
       z-index: 999;
+      top: 0;
+      left: 0;
+      right: 0;
 
       @include on-mobile {
         position: fixed;
@@ -89,6 +92,40 @@ html {
           margin-right: 1.5rem;
         }
       }
+    }
+
+    .loader {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader-white {
+      background-color: $white-color;
+
+      span {
+        display: block;
+        overflow: hidden;
+        width: fit-content;
+        height: fit-content;
+
+        span {
+          transform: translateY(100%);
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .loader-black {
+      background-color: $black-color;
     }
 
     main {
@@ -250,7 +287,7 @@ html {
         margin-bottom: 25rem;
 
         &:last-child {
-          margin-bottom: 2rem;
+          margin-bottom: 6rem;
         }
 
         @include on-tablet {
