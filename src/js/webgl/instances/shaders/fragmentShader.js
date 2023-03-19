@@ -5,6 +5,7 @@ uniform vec2 uImageSizes;
 uniform vec2 uPlaneSizes;
 uniform sampler2D tMap;
 uniform vec2 uOffset;
+uniform float uAlpha;
 
 varying vec2 vUv;
 
@@ -31,7 +32,7 @@ void main() {
   // vec4 texture = texture2D(tMap, uv);
   vec3 texture = rgbShift(tMap,vUv,uOffset);
 
-  gl_FragColor = vec4(texture, 1.0);
+  gl_FragColor = vec4(texture, uAlpha);
 }
 `;
 

@@ -211,6 +211,17 @@ html {
         font-family: $title-font;
         width: 100%;
 
+        span {
+          display: block;
+          width: fit-content;
+          height: fit-content;
+          overflow: hidden;
+
+          span {
+            transform: translateY(100%);
+          }
+        }
+
         @include on-mobile {
           font-size: 12vw;
           width: 100%;
@@ -221,11 +232,6 @@ html {
           display: flex;
           flex-direction: column;
           width: 100%;
-        }
-
-        span {
-          display: inline-block;
-          font-size: 100%;
         }
       }
 
@@ -506,6 +512,42 @@ html {
           margin-bottom: 0;
         }
       }
+    }
+  }
+}
+
+footer {
+  background-color: $black-color;
+  width: 100%;
+  height: fit-content;
+  padding: 2rem 4rem !important;
+  text-align: center;
+  display: flex !important;
+  color: $white-color;
+  font-family: $body-font !important;
+  justify-content: space-between;
+  z-index: 99;
+  position: relative;
+
+  @include on-tablet {
+    padding: 2rem !important;
+  }
+
+  @include on-mobile {
+    padding: 2rem !important;
+  }
+
+  span {
+    font-size: 0.7rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: $white-color;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import gsap from 'gsap';
 
 import { vertexShader } from './shaders/vertexShader';
 import { fragmentShader } from './shaders/fragmentShader';
@@ -26,7 +27,6 @@ export default class Plane {
 
     this.materialTemplate = new THREE.ShaderMaterial({
       transparent: true,
-      side: THREE.DoubleSide,
       uniforms: {
         tMap: {
           value: this.texture,
@@ -49,6 +49,9 @@ export default class Plane {
         uImageSizes: {
           value: new THREE.Vector2(0, 0),
         },
+        uAlpha: {
+          value: 0.0,
+        },
       },
       vertexShader,
       fragmentShader,
@@ -62,6 +65,8 @@ export default class Plane {
     this.lerp = (start, end, t) => start * (1 - t) + end * t;
 
     this.webgl.scroll.instance.on('scroll', ({ velocity }) => {
+      this.planeAppear();
+
       this.target = velocity;
       this.current = this.lerp(this.current, this.target, this.ease);
       this.instance.material.uniforms.uOffset.value.set(
@@ -84,6 +89,17 @@ export default class Plane {
       this.webgl.sizes.height / 2 - this.image.top - this.image.height / 2,
       0.5,
     );
+  }
+
+  planeAppear() {
+    gsap.to(this.instance.material.uniforms.uAlpha, {
+      scrollTrigger: {
+        trigger: this.image.element,
+        start: 'top 80%',
+      },
+      duration: 0.5,
+      value: 1.0,
+    });
   }
 
   updateImageSize() {
