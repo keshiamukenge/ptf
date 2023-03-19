@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import gsap from 'gsap';
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
@@ -103,7 +104,11 @@ export default class PostProcessing {
   }
 
   update() {
-    this.customPass.uniforms.uMouse.value = this.webgl.mouse.coordinates;
+    gsap.to(this.customPass.uniforms.uMouse.value, {
+      x: this.webgl.mouse.coordinates.x,
+      y: this.webgl.mouse.coordinates.y,
+      duration: 0.8,
+    });
     // this.customPass.uniforms.uVelo.value = Math.min(this.webgl.mouse.targetSpeed, 0.5);
     // this.webgl.mouse.targetSpeed *= 0.999;
 
