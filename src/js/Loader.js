@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import gsap, { Expo } from 'gsap';
 
 export default class Loader {
   constructor(onLoaderFinished) {
@@ -53,25 +53,26 @@ export default class Loader {
   }
 
   runLoaderAnimation() {
-    const timeline = gsap.timeline({ delay: 0.5 });
+    const timeline = gsap.timeline();
 
     timeline.to('#loader-progress > span', {
       y: `${-100}%`,
-      duration: 0.6,
+      duration: 0.8,
     });
 
     timeline.to('#loader-white', {
       y: `${-100}%`,
-      duration: 0.6,
-      ease: 'power1.inOut',
+      duration: 2,
+      ease: Expo.easeInOut,
     }, '<30%');
 
     timeline.to('#loader-black', {
       y: `${-100}%`,
-      duration: 0.4,
+      duration: 1.8,
+      ease: Expo.easeInOut,
       onComplete: () => {
         this.onLoaderFinished();
       },
-    }, '<45%');
+    }, '<17%');
   }
 }

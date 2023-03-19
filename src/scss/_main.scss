@@ -535,10 +535,15 @@ footer {
 
   @include on-mobile {
     padding: 2rem !important;
+    flex-direction: column-reverse;
   }
 
   span {
     font-size: 0.7rem;
+
+    @include on-mobile {
+      font-size: 0.6rem;
+    }
   }
 
   a {
@@ -548,6 +553,11 @@ footer {
 
     &:hover {
       cursor: pointer;
+    }
+
+    @include on-mobile {
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
     }
   }
 }

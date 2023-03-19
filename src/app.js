@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import gsap, { Expo } from 'gsap';
 
 import TextsAnimations from './js/TextsAnimations';
 import Webgl from './js/webgl/Webgl';
@@ -15,16 +15,16 @@ export default class App {
       this.scroll.instance.start();
 
       gsap.to('h1 > span > span', {
-        duration: 0.5,
+        duration: 2,
         y: 0,
-        ease: 'power1.out',
+        ease: Expo.easeOut,
         stagger: '0.1',
       });
 
       gsap.to('p > span > span', {
         y: 0,
-        duration: 0.5,
-        ease: 'power1.out',
+        duration: 2,
+        ease: Expo.easeOut,
         stagger: '0.1',
       });
     });

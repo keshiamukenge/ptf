@@ -1,5 +1,5 @@
 import SplitInLines from 'lines-split';
-import gsap from 'gsap';
+import gsap, { Expo } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default class TextsAnimations {
@@ -35,8 +35,8 @@ export default class TextsAnimations {
           trigger: title,
           start: 'top 80%',
         },
-        duration: 0.5,
-        ease: 'power1.inout',
+        duration: 1.8,
+        ease: Expo.easeOut,
         opacity: 1,
         y: 0,
       });
@@ -54,8 +54,8 @@ export default class TextsAnimations {
           trigger: this.projectsTitles[id],
           start: 'top 80%',
         },
-        duration: 0.5,
-        ease: 'power1.inout',
+        duration: 1.8,
+        ease: Expo.easeOut,
         opacity: 1,
         y: 0,
       });
