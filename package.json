@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.26.0"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.1",
     "gsap": "^3.11.4",
     "locomotive-scroll": "^4.1.4",
     "sass": "^1.58.0",
