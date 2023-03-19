@@ -59,19 +59,19 @@ export default class Plane {
 
     this.current = 0;
     this.target = 0;
-    this.ease = this.webgl.scroll.instance.options.lerp;
+    this.ease = 0.05;
     this.setupPlane();
 
     this.lerp = (start, end, t) => start * (1 - t) + end * t;
 
-    this.webgl.scroll.instance.on('scroll', ({ velocity }) => {
+    this.webgl.scroll.instance.on('scroll', ({ progress }) => {
       this.planeAppear();
 
-      this.target = velocity;
+      this.target = progress;
       this.current = this.lerp(this.current, this.target, this.ease);
       this.instance.material.uniforms.uOffset.value.set(
         this.instance.position.x * 0.0,
-        -(this.target - this.current) * 0.004,
+        -(this.target - this.current),
       );
     });
   }
