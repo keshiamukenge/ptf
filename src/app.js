@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 
+import TextsAnimations from './js/TextsAnimations';
 import Webgl from './js/webgl/Webgl';
 import SmoothScroll from './js/SmoothScroll';
 import Loader from './js/Loader';
@@ -7,10 +8,25 @@ import Loader from './js/Loader';
 export default class App {
   constructor() {
     this.scroll = new SmoothScroll();
+    this.texts = new TextsAnimations();
 
     // Preloader
     this.loader = new Loader(() => {
       this.scroll.instance.start();
+
+      gsap.to('h1 > span > span', {
+        duration: 0.5,
+        y: 0,
+        ease: 'power1.out',
+        stagger: '0.1',
+      });
+
+      gsap.to('p > span > span', {
+        y: 0,
+        duration: 0.5,
+        ease: 'power1.out',
+        stagger: '0.1',
+      });
     });
 
     // Header

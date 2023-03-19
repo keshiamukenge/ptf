@@ -79,11 +79,11 @@ export default class PostProcessing {
           // vec2 warpedUV = vUv + vec2(hash - 0.5)*c; //power
           // color = texture2D(tDiffuse,warpedUV) + texture2D(tDiffuse,warpedUV)*vec4(vec3(c),1.);
 
-          // float c = circle(newUV, uMouse, 0.0, 0.2);
-          float c = circle(newUV, uMouse, 0.0, 0.2 + uVelo * 2.0) * 40.0 * uVelo;
+          float c = circle(newUV, uMouse, .06, 0.09);
+          // float c = circle(newUV, uMouse, 0.0, 0.2 + uVelo * 2.0) * 40.0 * uVelo;
           vec2 offsetVector = normalize(uMouse - vUv);
-          vec2 warpedUV = mix(vUv, uMouse, c * 0.99); //power
-          color = texture2D(tDiffuse,warpedUV) + texture2D(tDiffuse, warpedUV) * vec4(vec3(c), 1.0);
+          vec2 warpedUV = mix(vUv, uMouse, c * 0.6); //power
+          color = texture2D(tDiffuse,warpedUV) + texture2D(tDiffuse, warpedUV) * vec4(vec3(c), 1.0) * 0.3;
 
           gl_FragColor = color;
         }
@@ -96,12 +96,16 @@ export default class PostProcessing {
   resize() {
     this.composer.setSize(this.webgl.sizes.width, this.webgl.sizes.height);
     this.composer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.displacementShader.uniforms.uResolution.value.set(
+      1.0,
+      this.webgl.sizes.height / this.webgl.sizes.width,
+    );
   }
 
   update() {
     this.customPass.uniforms.uMouse.value = this.webgl.mouse.coordinates;
-    this.customPass.uniforms.uVelo.value = Math.min(this.webgl.mouse.targetSpeed, 0.5);
-    this.webgl.mouse.targetSpeed *= 0.999;
+    // this.customPass.uniforms.uVelo.value = Math.min(this.webgl.mouse.targetSpeed, 0.5);
+    // this.webgl.mouse.targetSpeed *= 0.999;
 
     this.composer.render();
   }
