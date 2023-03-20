@@ -41,7 +41,8 @@ export default class App {
     this.onScroll();
     this.webgl = new Webgl(this.scroll);
 
-    // this.rotateStarIcon();
+    this.star = document.querySelector('.star-icon');
+
     this.onProjectImageHovered();
   }
 
@@ -145,26 +146,12 @@ export default class App {
   onScroll() {
     this.scroll.instance.on('scroll', () => {
       this.setHeaderColor();
+      gsap.to(this.star, {
+        duration: 1,
+        rotate: `${window.pageYOffset / 2}deg`,
+      });
     });
   }
-
-  // rotateStarIcon(speed, direction) {
-  //   if (direction === 'down') {
-  //     if (Math.round(this.starRotation) === 360) {
-  //       this.starRotation = 0;
-  //       this.starRotation += 1;
-  //     }
-
-  //     this.starRotation += 1;
-  //   } else if (direction === 'up') {
-  //     if (Math.round(this.starRotation) === 360) {
-  //       this.starRotation = 0;
-  //       this.starRotation -= 1;
-  //     }
-
-  //     this.starRotation -= 1;
-  //   }
-  // }
 }
 
 new App();
