@@ -66,8 +66,7 @@ export default class Plane {
 
     this.webgl.scroll.instance.on('scroll', ({ progress }) => {
       this.planeAppear();
-
-      this.target = progress;
+      this.target = progress * 1.3;
       this.current = this.lerp(this.current, this.target, this.ease);
       this.instance.material.uniforms.uOffset.value.set(
         this.instance.position.x * 0.0,

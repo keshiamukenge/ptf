@@ -2,10 +2,11 @@
 @font-face {
   font-family: 'molika';
   src: local('molika'), url('@/assets/fonts/molika.ttf');
+  font-display: swap;
 }
 
-$title-font: 'molika';
-$body-font: 'Raleway';
+$title-font: 'molika', Helvetica;
+$body-font: 'Raleway', Helvetica;
 
 $title-weight: 400;
 $text-weight: 400;

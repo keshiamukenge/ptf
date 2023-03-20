@@ -10,6 +10,7 @@ html {
     height: fit-content;
     max-width: $screen-size-xl;
     margin: auto;
+    font-display: swap;
 
     @include on-large-desktop {
       overflow-y: initial;
